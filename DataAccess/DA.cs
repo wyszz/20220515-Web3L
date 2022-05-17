@@ -72,7 +72,7 @@ namespace DataAccess
             {
                 for (int i = 0; i < names.Length; i++)
                 {
-                    scd.Parameters.AddWithValue(names[i], values[i]);
+                    sda.SelectCommand.Parameters.AddWithValue(names[i], values[i]);
                 }
             }
             DataTable dt = new DataTable();

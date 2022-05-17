@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Business;
 using Entity;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace _20220515_Web3L
 {
@@ -61,6 +63,13 @@ namespace _20220515_Web3L
             {
                 Response.Write("<script>alert('欢迎进入教师界面！');windows.location.href='TeacherMainPage.sapx'</script>");
             }
+            //
+            DataTable dt = new DataTable();
+            if (dt.Rows.Count<=0)
+            {
+
+            }
+            dt.Rows[0]["roleid"].ToString();
         }
 
 
