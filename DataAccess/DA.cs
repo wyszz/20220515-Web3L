@@ -38,7 +38,7 @@ namespace DataAccess
             scd.Parameters.Clear();
             if (names != null)
             {
-                for (int i = 0; i <= names.Length; i++)
+                for (int i = 0; i < names.Length; i++)
                 {
                     scd.Parameters.AddWithValue(names[i], values[i]);
                 }
@@ -70,7 +70,7 @@ namespace DataAccess
             sda.SelectCommand.Connection = myconn;
             if (names != null)
             {
-                for (int i = 0; i <= names.Length; i++)
+                for (int i = 0; i < names.Length; i++)
                 {
                     scd.Parameters.AddWithValue(names[i], values[i]);
                 }
@@ -97,7 +97,7 @@ namespace DataAccess
             scd.Parameters.Clear();
             if (names != null)
             {
-                for (int i = 0; i <= names.Length; i++)
+                for (int i = 0; i < names.Length; i++)
                 {
                     scd.Parameters.AddWithValue(names[i], values[i]);
                 }
