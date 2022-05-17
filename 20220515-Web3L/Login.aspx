@@ -13,6 +13,9 @@
         .auto-style2 {
             text-align: right;
         }
+        .auto-style3 {
+            height: 34px;
+        }
     </style>
 </head>
 <body>
@@ -22,7 +25,7 @@
                 <tr>
                     <td class="auto-style2">教师ID</td>
                     <td>
-                        <asp:TextBox ID="tbx_teacherid" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="tbx_teacherid" runat="server" ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -32,8 +35,8 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>&nbsp;</td>
-                    <td>
+                    <td class="auto-style3"></td>
+                    <td class="auto-style3">
                         <asp:Button ID="btn_login" runat="server" OnClick="btn_login_Click" Text="登录" />
 &nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Button ID="btn_reset" runat="server" OnClick="btn_reset_Click" style="height: 27px" Text="重置" />

@@ -34,7 +34,7 @@ namespace _20220515_Web3L
                 Response.Write("<script>alert('教师ID不能为空！')</script>");
                 return;
             }
-            if (tbx_password.Text.Trim() == "")
+            if (this.tbx_password.Text.Trim() == "")
             {
                 Response.Write("<script>alert('密码不能为空！')</script>");
                 return;
@@ -44,7 +44,25 @@ namespace _20220515_Web3L
             Entity.Teacher t = new Teacher();
             t.TeacherID = this.tbx_teacherid.Text.Trim();
             t.Password = this.tbx_password.Text.Trim();
-            t.RoleID=
+            object result = Business.CommonBLL.TeacherLoginCheck(t);
+            if (result==null)
+            {
+                Response.Write("<script>alert('用户名密码错误，请重新输入！')</script>");
+                return;
+            }
+            t.RoleID = result.ToString();
+            t.Password = "";
+            Session["teacher"] = t;
+            if (t.RoleID=="000")
+            {
+                Response.Write("<script>alert('欢迎进入管理员界面！');windows.location.href='AdminManagePage.sapx'</script>");
+            }
+            else
+            {
+                Response.Write("<script>alert('欢迎进入教师界面！');windows.location.href='TeacherMainPage.sapx'</script>");
+            }
         }
+
+
     }
 }
