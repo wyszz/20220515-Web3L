@@ -69,13 +69,13 @@ namespace _20220515_Web3L
         protected global::System.Web.UI.WebControls.LinkButton lbtn_next;
 
         /// <summary>
-        /// tbx_pageindex 控件。
+        /// tbx_pagenum 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbx_pageindex;
+        protected global::System.Web.UI.WebControls.TextBox tbx_pagenum;
 
         /// <summary>
         /// btn_go 控件。

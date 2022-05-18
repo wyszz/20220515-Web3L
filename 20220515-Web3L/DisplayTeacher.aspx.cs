@@ -22,9 +22,9 @@ namespace _20220515_Web3L
                 this.LoadDataList();
             }
         }
-        private void LoadDataList()
+
+        private PagedDataSource DataListPaging(DataTable dt)
         {
-            DataTable dt = Business.AdminBusiness.SelectViewTeacher();
             DataView dv = dt.DefaultView;
             PagedDataSource pds = new PagedDataSource();
             pds.DataSource = dv;
@@ -48,7 +48,67 @@ namespace _20220515_Web3L
             {
                 this.lbtn_next.Enabled = true;
             }
-            this.dl_teacher.DataSource = pds;
+            return pds;
+        }
+
+        private void LoadDataList()
+        {
+            DataTable dt = Business.AdminBusiness.SelectViewTeacher();
+            this.dl_teacher.DataSource = this.DataListPaging(dt);
+            this.dl_teacher.DataBind();
+        }
+
+        protected void lbtn_Click(object sender, EventArgs e)
+        {
+            LinkButton lbtn = sender as LinkButton;
+            string cmda = lbtn.CommandArgument;
+            int pageindex = Convert.ToInt32(ViewState["pageindex"].ToString());
+            if (cmda=="pre")
+            {
+                pageindex = pageindex - 1;
+            }
+            else
+            {
+                pageindex = pageindex + 1;
+            }
+            ViewState["pageindex"] = pageindex;
+            this.LoadDataList();
+            this.tbx_pagenum.Text = (pageindex + 1).ToString();
+        }
+
+        protected void btn_go_Click(object sender, EventArgs e)
+        {
+            int pagenum = Convert.ToInt32(this.tbx_pagenum.Text.Trim());
+            int pageindex = pagenum - 1;
+            int pagecount = Convert.ToInt32(ViewState["pagecount"]);
+            //int.TryParse
+            if (pageindex < 0)
+            {
+                Response.Write("<script>alert('页数必须大于0！将回到首页')</script>");
+                pageindex = 0;
+            }
+            if (pageindex >= pagecount)
+            {
+                Response.Write("<script>alert('页数不能超过总页数！将达到最后一页')</script>");
+                pageindex = pagecount - 1;
+            }
+            ViewState["pageindex"] = pageindex;
+            this.LoadDataList();
+            this.tbx_pagenum.Text = (pageindex + 1).ToString();
+        }
+
+        protected void btn_search_Click(object sender, EventArgs e)
+        {
+            string tname = this.tbx_teachername.Text.Trim();
+            if (tname=="")
+            {
+                Response.Write("<script>alert('教师姓名不能为空！')</script>");
+                return;
+            }
+            Entity.Teacher t = new Teacher();
+            t.TeacherName = "%" + tname + "%";
+            DataTable dt = Business.AdminBusiness.SelectViewTeacherbyTeacherName(t);
+            this.dl_teacher.DataSource = this.DataListPaging(dt);
             this.dl_teacher.DataBind();
         }
     }

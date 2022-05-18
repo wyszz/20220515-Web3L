@@ -69,6 +69,12 @@
   <ItemGroup>
     <Content Include="AdminManagePage.aspx" />
     <Content Include="DisplayTeacher.aspx" />
+    <Content Include="images\图片1.jpg" />
+    <Content Include="images\图片2.jpg" />
+    <Content Include="images\图片3.jpg" />
+    <Content Include="images\图片4.jpg" />
+    <Content Include="images\图片5.jpg" />
+    <Content Include="images\图片6.JPG" />
     <Content Include="Login.aspx" />
     <Content Include="TeacherMainPage.aspx" />
     <Content Include="Web.config" />
@@ -123,9 +129,7 @@
       <Name>Entity</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="images\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
