@@ -46,12 +46,24 @@
         .auto-style14 {
             width: 219px;
         }
+        .auto-style15 {
+            width: 171px;
+            text-align: right;
+            height: 24px;
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
             <table class="auto-style1">
+                <tr>
+                    <td class="auto-style15" colspan="2">
+                        <asp:Label ID="Label1" runat="server"></asp:Label>
+                    </td>
+                    <td colspan="7" class="auto-style2">
+                    </td>
+                </tr>
                 <tr>
                     <td class="auto-style8" colspan="2">请输入教师姓名：</td>
                     <td colspan="7">

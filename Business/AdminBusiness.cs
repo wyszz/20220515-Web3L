@@ -24,5 +24,11 @@ namespace Business
             object[] values = new object[] { t.TeacherName};
             return DataAccess.DA.GetDataTable("spr_SelectViewTeacherbyTeacherName", CommandType.StoredProcedure, names, values);
         }
+        public static object  GetTeacherNamebyID(Entity.Teacher t)
+        {
+            string[] names = new string[] { "teacherid" };
+            object[] values = new object[] { t.TeacherID };
+            return DataAccess.DA.GetOneData("spr_GetTeacherNamebyID", CommandType.StoredProcedure, names, values);
+        }
     }
 }

@@ -57,21 +57,19 @@ namespace _20220515_Web3L
             Session["teacher"] = t;
             if (t.RoleID=="000")
             {
-                Response.Write("<script>alert('欢迎进入管理员界面！');windows.location.href='AdminManagePage.sapx'</script>");
+                Response.Write("<script>alert('欢迎进入管理员界面！');window.location.href='DisplayTeacher.aspx'</script>");
             }
             else
             {
-                Response.Write("<script>alert('欢迎进入教师界面！');windows.location.href='TeacherMainPage.sapx'</script>");
+                Response.Write("<script>alert('欢迎进入教师界面！');window.location.href='DisplayTeacher.aspx'</script>");
             }
             //
-            DataTable dt = new DataTable();
-            if (dt.Rows.Count<=0)
-            {
+            //DataTable dt = new DataTable();
+            //if (dt.Rows.Count<=0)
+            //{
 
-            }
-            dt.Rows[0]["roleid"].ToString();
+            //}
+            //dt.Rows[0]["roleid"].ToString();
         }
-
-
     }
 }
