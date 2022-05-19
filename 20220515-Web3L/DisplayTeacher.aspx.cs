@@ -14,12 +14,14 @@ namespace _20220515_Web3L
 {
     public partial class DisplayTeacher : System.Web.UI.Page
     {
+        static DataTable DT;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                DT = Business.AdminBusiness.SelectViewTeacher();
                 ViewState["pageindex"] = 0;
-                this.LoadDataList();
+                this.LoadDataList(DT);
             }
         }
 
@@ -51,9 +53,8 @@ namespace _20220515_Web3L
             return pds;
         }
 
-        private void LoadDataList()
+        private void LoadDataList(DataTable dt)
         {
-            DataTable dt = Business.AdminBusiness.SelectViewTeacher();
             this.dl_teacher.DataSource = this.DataListPaging(dt);
             this.dl_teacher.DataBind();
         }
@@ -72,7 +73,7 @@ namespace _20220515_Web3L
                 pageindex = pageindex + 1;
             }
             ViewState["pageindex"] = pageindex;
-            this.LoadDataList();
+            this.LoadDataList(DT);
             this.tbx_pagenum.Text = (pageindex + 1).ToString();
         }
 
@@ -93,7 +94,7 @@ namespace _20220515_Web3L
                 pageindex = pagecount - 1;
             }
             ViewState["pageindex"] = pageindex;
-            this.LoadDataList();
+            this.LoadDataList(DT);
             this.tbx_pagenum.Text = (pageindex + 1).ToString();
         }
 
@@ -107,8 +108,8 @@ namespace _20220515_Web3L
             }
             Entity.Teacher t = new Teacher();
             t.TeacherName = "%" + tname + "%";
-            DataTable dt = Business.AdminBusiness.SelectViewTeacherbyTeacherName(t);
-            this.dl_teacher.DataSource = this.DataListPaging(dt);
+            DT = Business.AdminBusiness.SelectViewTeacherbyTeacherName(t);
+            this.dl_teacher.DataSource = this.DataListPaging(DT);
             this.dl_teacher.DataBind();
         }
     }
